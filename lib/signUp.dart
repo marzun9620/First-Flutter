@@ -5,7 +5,7 @@ import 'package:first_app/uihelper.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -15,21 +15,19 @@ class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  SignUp(String email, String password) async {
-    if (email == "" && password == "") {
-      UiHelper.CustomAlertDialog(context, "Enter required Field");
+  void signUp(String email, String password, BuildContext context) async {
+    if (email.isEmpty || password.isEmpty) {
+      UiHelper.CustomAlertDialog(context, "Enter required fields");
     } else {
-      UserCredential? userCredential;
       try {
-        userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => NinjaCard()));
-        });
-        // ignore: empty_catches
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NinjaCard()),
+        );
       } on FirebaseAuthException catch (e) {
-        return UiHelper.CustomAlertDialog(context, e.code.toString());
+        UiHelper.CustomAlertDialog(context, e.code.toString());
       }
     }
   }
@@ -55,9 +53,9 @@ class _SignUpState extends State<SignUp> {
           SizedBox(
             height: 30.0,
           ),
-          SignUp(emailController.text.toString(),
-              passwordController.text.toString()),
-          UiHelper.CustomButton(() {}, "Sign Up"),
+          UiHelper.CustomButton(() {
+            signUp(emailController.text, passwordController.text, context);
+          }, "Sign Up"),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

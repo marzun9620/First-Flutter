@@ -3,7 +3,7 @@ import 'package:first_app/uihelper.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,12 +27,18 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               UiHelper.CustomTextField(
-                  emailController, "Email", Icons.email, false),
-              UiHelper.CustomTextField(
-                  passwordController, "Password", Icons.password, true),
-              SizedBox(
-                height: 30.0,
+                emailController,
+                "Email",
+                Icons.email,
+                false,
               ),
+              UiHelper.CustomTextField(
+                passwordController,
+                "Password",
+                Icons.password,
+                true,
+              ),
+              SizedBox(height: 30.0),
               UiHelper.CustomButton(() {}, 'Login'),
               SizedBox(height: 10),
               Row(
@@ -42,13 +49,16 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 15),
                   ),
                   TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignUp()));
-                      },
-                      child: Text("Sign Up"))
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUp()),
+                      );
+                    },
+                    child: Text("Sign Up"),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

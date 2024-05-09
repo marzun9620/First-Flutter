@@ -1,10 +1,10 @@
-buildscripts{
+buildscript {
     repositories {
         google()
         mavenCentral()
     }
-    dependencies{
-        classpath 'com.google.gms.google-services:4.4.1'
+    dependencies {
+        classpath 'com.google.gms:google-services:4.4.1' // Note the correct dependency syntax
     }
 }
 

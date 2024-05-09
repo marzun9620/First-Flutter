@@ -1,29 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:first_app/signUp.dart';
+import 'package:first_app/login.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Firebase options
-  const FirebaseOptions firebaseOptions = FirebaseOptions(
-    apiKey: "AIzaSyDuyVLWkZAJuyhBWsROQEGOEz8gG3qW4Jw",
-    authDomain: "upheld-modem-401715.firebaseapp.com",
-    databaseURL: "https://upheld-modem-401715.firebaseio.com",
-    projectId: "upheld-modem-401715",
-    storageBucket: "upheld-modem-401715.appspot.com",
-    messagingSenderId: "237884309308",
-    appId: "1:237884309308:android:a7c1fb8fafa30fe376e839",
-    measurementId: "G-237884309308",
-  );
-  // Initialize Firebase
   await Firebase.initializeApp(
-    name: 'secondary',
-    options: firebaseOptions,
-  );
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDuyVLWkZAJuyhBWsROQEGOEz8gG3qW4Jw",
+          appId: "1:237884309308:android:a7c1fb8fafa30fe376e839",
+          messagingSenderId: "237884309308",
+          projectId: "upheld-modem-401715"));
 
   runApp(const MaterialApp(
-    home: SignUp(),
+    home: LoginPage(),
   ));
 }
 
