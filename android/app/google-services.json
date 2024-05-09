@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "237884309308",
+    "project_id": "upheld-modem-401715",
+    "storage_bucket": "upheld-modem-401715.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237884309308:android:a7c1fb8fafa30fe376e839",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237884309308-10gpnqgdvup4r7u7kp7655111rghb99f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuyVLWkZAJuyhBWsROQEGOEz8gG3qW4Jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237884309308-10gpnqgdvup4r7u7kp7655111rghb99f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
