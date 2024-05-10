@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_app/main.dart';
 import 'package:first_app/signUp.dart';
 import 'package:first_app/uihelper.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,25 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  Future<void> signInWithEmailAndPassword(BuildContext context) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
+      // Navigate to home page after successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                NinjaCard()), // Replace Home() with your home page
+      );
+    } on FirebaseAuthException catch (e) {
+      // Handle authentication errors
+      UiHelper.CustomAlertDialog(
+          context, e.message ?? 'Unknown error occurred');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +60,15 @@ class _LoginPageState extends State<LoginPage> {
                 true,
               ),
               SizedBox(height: 30.0),
-              UiHelper.CustomButton(() {}, 'Login'),
+              UiHelper.CustomButton(() {
+                signInWithEmailAndPassword(context);
+              }, 'Login'),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already Have an Account',
+                    'Don\'t have an account?',
                     style: TextStyle(fontSize: 15),
                   ),
                   TextButton(
