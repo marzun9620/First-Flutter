@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:first_app/Animals.dart';
-import 'package:first_app/userDetails.dart';
+import 'package:first_app/Landing_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -14,7 +13,7 @@ void main() async {
           projectId: "upheld-modem-401715"));
 
   runApp(const MaterialApp(
-    home: Books(),
+    home: Landing_page(),
   ));
 }
 
